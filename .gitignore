@@ -1,8 +1,8 @@
 # Prevent cache being added to the repo
-__pycache__
+__pycache__/
 
 # Common IDE's
-.idea
+.idea/
 
 # Environment files
 .env
@@ -10,4 +10,5 @@ __pycache__
 # Logs & Records
 *.log
 *.csv
+data/
 
