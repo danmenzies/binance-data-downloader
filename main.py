@@ -1,24 +1,40 @@
+import os
+
 from functions import *
+from keys import *
 
 if __name__ == "__main__":
+    # Load the binance keys
     client = api.Binance_API(api_key=BINANCE_API_KEY, secret_key=BINANCE_SECRET_KEY)
 
-    start_date = "2023-01-01"
-    end_date = "2025-12-31"
+    # Set the date and timeframes
+    start_date = "2023-05-01"
+    end_date = "2024-05-11"
+    timeframe = "5m"
 
-    timeframe = "4h"
-    pair1 = "TRXUSDT"
-    pair2 = "BANDUSDT"
+    # Create a list of pairs
+    pairs = [
+        "SOLBTC",
+        "SOLUSDT",
+    ]
 
+    # Rip through the pairs
+    for pair in pairs:
+        # Create the path to save the data
+        data_folder = os.path.join("data", "candles")
+        data_path = os.path.join(data_folder, f"df_{timeframe}_{pair}.csv")
+        os.makedirs(data_folder, exist_ok=True)
 
-    # Download single asset data
-    candles = get_candles_batched(client, symbol=pair1, interval=timeframe, start_date=start_date, end_date=end_date, delay=0.4)
-    df = create_df(candles)
+        # Collect the candles
+        candles = get_candles_batched(client, symbol=pair, interval=timeframe, start_date=start_date, end_date=end_date, delay=0.4)
 
-    print(df)
-    plot_chart(df)
-    df.to_csv(f"df_{timeframe}_{pair1}.csv", index=False)
+        # Convert the candles to a dataframe
+        df = create_df(candles)
 
+        # Visualise and save the data
+        print(df)
+        df.to_csv(data_path, index=False)
+        plot_chart(df)
 
     # # Download spread data
     # candles1 = get_candles_batched(client, symbol=pair1, interval=timeframe, start_date=start_date, end_date=end_date, delay=0.4)
