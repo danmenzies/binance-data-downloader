@@ -13,6 +13,28 @@ As an example of using this code, you can download the entire bitcoin history on
 - Building a candlestick chart for visual analysis of previously obtained data
 - Ability to save the obtained data in CSV format for further use or analysis.
 
+### Installation
+
+**Prerequisites**
+
+- Python 3.12 or higher
+- [Binance API key and secret key](https://www.binance.com/en-GB/support/faq/how-to-create-api-keys-on-binance-360002502072)
+
+1. Clone the repository
+```bash
+git clone git@github.com:nonisich/Binance-Data-Downloader.git
+```
+
+2. Install the required packages
+```bash
+pip install -r requirements.txt
+```
+
+3. Copy the .env.example file to .env and fill in the required fields
+```bash
+cp .env.example .env
+```
+
 ### How to run
 1. Specify your API and secret key in the keys.py file
 2. Run the main.py script to load the data and plot the graphs.
