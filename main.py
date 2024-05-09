@@ -1,7 +1,7 @@
 from functions import *
 
 if __name__ == "__main__":
-    client = api.Binance_API(api_key=binance_api_key, secret_key=binance_secret_key)
+    client = api.Binance_API(api_key=BINANCE_API_KEY, secret_key=BINANCE_SECRET_KEY)
 
     start_date = "2023-01-01"
     end_date = "2025-12-31"
